@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-      - uses: actions/checkout@v2
-      - name: LInter execution
-      - uses: github/super-linter@v3
+        uses: actions/checkout@v2
+      - name: Linter execution
+        uses: github/super-linter@v3
         env:
           DEFAULT_BRANCH: nodejs_linter_job
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
