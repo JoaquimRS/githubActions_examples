@@ -18,6 +18,7 @@ jobs:
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
           VALIDATE_JAVASCRIPT_ES: true
   test-execution:
+    needs: linter-execution
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
