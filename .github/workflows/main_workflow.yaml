@@ -22,6 +22,5 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Run jest test
       - run: npm install jest
       - run: npm test
