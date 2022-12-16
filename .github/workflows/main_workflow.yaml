@@ -16,7 +16,7 @@ jobs:
       - name: Setting node version
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.name}}
+          node-version: ${{ matrix.node }}
       - name: Linter execution
         uses: github/super-linter@v4
         env:
