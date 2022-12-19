@@ -42,5 +42,4 @@ jobs:
       - name: environment
         id: hello
         uses: adeloyedeji/github-actions-hello@v1.0
-        with:
-          who-to-greet: '$DESTINATION_PERSON JoaquimRS'
+        run: echo "$DESTINATION_PERSON JoaquimRS"
