@@ -2,7 +2,9 @@ name: main_workflow
 on:
   push:
     branches:
-      - nodejs_nodeversions_job
+      - nodejs_environment_job
+env:
+  DESTINATION_PERSON: 2DAW
 jobs:
   linter-execution:
     runs-on: ubuntu-latest
@@ -20,7 +22,7 @@ jobs:
       - name: Linter execution
         uses: github/super-linter@v4
         env:
-          DEFAULT_BRANCH: nodejs_nodeversions_job
+          DEFAULT_BRANCH: nodejs_environment_job
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           LINTER_RULES_PATH: /
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
@@ -33,3 +35,13 @@ jobs:
         uses: actions/checkout@v2
       - run: npm install jest
       - run: npm test
+  environment_test_execution:
+    needs: test-execution
+    runs-on: ubuntu-latest
+    name: environment
+    steps:
+      - name: environment
+        id: hello
+        uses: adeloyedeji/github-actions-hello@v1.0
+        with:
+          who-to-greet: '${env.DESTINATION_PERSON} JoaquimRS'
