@@ -41,4 +41,6 @@ jobs:
     steps:
       - name: environment
         id: hello
-        run: echo '${{env.DESTINATION_PERSON}} JoaquimRS
+        uses: adeloyedeji/github-actions-hello@v1.0
+        with:
+          who-to-greet: '${{env.DESTINATION_PERSON}} JoaquimRS'
