@@ -11,5 +11,5 @@ outputs:
   msg:
     description: "Mensaje de Respuesta del Script"
 runs:
-  using: "node12"
+  using: "node16"
   main: "../../dist/index.js"

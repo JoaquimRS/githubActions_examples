@@ -57480,46 +57480,6 @@ module.exports = JSON.parse('["ac","com.ac","edu.ac","gov.ac","net.ac","mil.ac",
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nccwpck_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__nccwpck_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__nccwpck_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__nccwpck_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__nccwpck_require__.nmd = (module) => {
@@ -57535,31 +57495,25 @@ module.exports = JSON.parse('["ac","com.ac","edu.ac","gov.ac","net.ac","mil.ac",
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
-__nccwpck_require__.r(__webpack_exports__);
-/* harmony import */ var node_telegram_bot_api__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(633);
-/* harmony import */ var node_telegram_bot_api__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(node_telegram_bot_api__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2186);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_1__);
+const TelegramBot = __nccwpck_require__(633)
+const core = __nccwpck_require__(2186)
 
+const token = core.getInput("telegram_token")
+const chatID = core.getInput("telegram_id_user")
 
-
-const token = (0,_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("telegram_token")
-const chatID = (0,_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("telegram_id_user")
-
-const bot = new (node_telegram_bot_api__WEBPACK_IMPORTED_MODULE_0___default())(token, { polling: true });
+const bot = new TelegramBot(token, { polling: true });
 
 try {
     const name = process.argv[2];
     const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${name}`;
 
     bot.sendMessage(chatID, message)
-    ;(0,_actions_core__WEBPACK_IMPORTED_MODULE_1__.setOutput)('msg', "Mensaje enviado correctamente ")
+    core.setOutput('msg', "Mensaje enviado correctamente ")
     process.exit(0)
 } catch (e) {
-    (0,_actions_core__WEBPACK_IMPORTED_MODULE_1__.setFailed)("Hubo un error")
+    core.setFailed("Hubo un error")
 }
 })();
 
