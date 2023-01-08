@@ -12,4 +12,4 @@ outputs:
     description: "Mensaje de Respuesta del Script"
 runs:
   using: "node16"
-  main: "../../dist/index.js"
+  main: "dist/index.js"
