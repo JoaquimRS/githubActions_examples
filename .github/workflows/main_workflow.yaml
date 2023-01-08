@@ -1,0 +1,33 @@
+name: main_workflow
+on:
+  push:
+    branches:
+      - react_app_deploy
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Create Statics
+        run: npm install && npm run build
+      - name: Upload Artifacs
+        uses: actions/upload-artifact@v3
+        with:
+          name: react-project
+          path: build/
+  deploy-job:
+    needs: build-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Artifacs
+        uses: actions/download-artifact@v2
+        with:
+          name: react-project
+      - name: Deploy on Surge.sh
+        uses: dswistowsky/surge-sh-action@v1
+        with:
+          domain: 'react-app-joaquim.surge.sh'
+          project: '.'
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
