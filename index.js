@@ -9,12 +9,9 @@ const bot = new TelegramBot(token, { polling: true });
 try {
     const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${core.getInput("user_name")}`;
 
-    bot.sendMessage(chatID, message)
-<<<<<<< HEAD
-    core.setOutput("msg", "Mensaje enviado correctamente ")
-=======
-    core.setOutput("msg", "Mensaje enviado correctamente")
->>>>>>> 07695642ad312330931c0246b68dce603d41a3d6
+    bot.sendMessage(chatID, message).then(() => {
+        core.setOutput("msg", "Mensaje enviado correctamente ")
+    })
 } catch (e) {
     core.setFailed(e.message)
 }
