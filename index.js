@@ -11,7 +11,7 @@ try {
     const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${name}`;
 
     bot.sendMessage(chatID, message)
-    core.setOutput('msg', "Mensaje enviado correctamente ")
+    core.setOutput('msg', "Mensaje enviado correctamente")
     process.exit(0)
 } catch (e) {
     core.setFailed("Hubo un error")
