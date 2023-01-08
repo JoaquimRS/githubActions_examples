@@ -1,0 +1,15 @@
+name: telegram-bot
+on:
+  push:
+    branches:
+      - "send_telegram_action"
+jobs:
+  send_message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions
+        with:
+          telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
+          telegram_id_user: ${{ secrets.TELEGRAM_ID_USER }}
+          user_name: "Moisés"
