@@ -25,7 +25,7 @@ jobs:
         with:
           name: react-project
       - name: Deploy on Surge.sh
-        uses: dswistowsky/surge-sh-action@v1
+        uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'react-app-joaquim.surge.sh'
           project: '.'
