@@ -2823,11 +2823,11 @@ const fs = __nccwpck_require__(147);
 
 //Declaration of variables
 const readmePath = path.resolve('./README.md');
-const resultado_tests = core.getInput("resultado_tests");
+const resultado_tests = core.getInput("resultado_test");
 const URL= "https://api.memegen.link/images/img.png";
 
-const MemeNegativo= URL.replace("img", core.getInput("frase_positiva"));
-const MemePositivo= URL.replace("img", core.getInput("frase_negativa"));
+const MemeNegativo= URL.replace("img", core.getInput("frase_negativa"));
+const MemePositivo= URL.replace("img", core.getInput("frase_positiva"));
 
 //Add line img meme
 var msg_output = resultado_tests == "success" ? "README modificado Meme Positivo" : "README modificado Meme Negativo";
