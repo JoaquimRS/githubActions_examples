@@ -2832,7 +2832,7 @@ const MemePositivo= URL.replace("img", core.getInput("frase_negativa"));
 //Add line img meme
 var msg_output = resultado_tests == "success" ? "README modificado Meme Positivo" : "README modificado Meme Negativo";
 var AddMeme = resultado_tests == "success" ? MemePositivo : MemeNegativo;
-var url_img= "![Meme Test](" + AddMeme + ")";
+var url_img= "![Meme](" + AddMeme + ")";
 
 //Change Readme
 fs.readFile(readmePath, 'utf8', function(err, data) {
