@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Action readme
-        uses: .github/actions/mod_readme
+        uses: ./.github/actions/mod_readme
         with:
           frase_positiva: "ams/No_me_lo_creo/Ha_funcionado"
           frase_negativa: "disastergirl/_/mira_pepe_si_que_va"
