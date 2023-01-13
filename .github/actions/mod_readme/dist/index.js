@@ -2837,8 +2837,8 @@ var url_img= "![Meme](" + AddMeme + ")";
 //Change Readme
 fs.readFile(readmePath, 'utf8', function(err, data) {
     if (err) throw err;
-    data += url_img;
-    fs.writeFile(readmePath, data, function(err) {
+    
+    fs.writeFile(readmePath, url_img, function(err) {
         if (err) throw err;
         console.log("Readme Modificado correctamente");
         core.setOutput('msg', msg_output);
