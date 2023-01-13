@@ -1,0 +1,18 @@
+name: custom-action
+description: "Generar imagen con texto"
+inputs:
+  frase_positiva:
+    description: "Frase positiva del meme"
+    required: true
+  frase_negativa:
+    description: "Frase negativa del meme"
+    required: true
+  resultado_test:
+    description: "Resultado del job para pasar los tests"
+    required: true
+outputs:
+  msg:
+    description: "Meme añadido al readme"
+runs:
+  using: "node16"
+  main: "../../dist/index.js"
