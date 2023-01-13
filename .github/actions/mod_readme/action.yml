@@ -10,9 +10,6 @@ inputs:
   resultado_test:
     description: "Resultado del job para pasar los tests"
     required: true
-outputs:
-  msg:
-    description: "Meme añadido al readme"
 runs:
   using: "node16"
-  main: "../../dist/index.js"
+  main: "dist/index.js"

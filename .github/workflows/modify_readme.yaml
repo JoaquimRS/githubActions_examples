@@ -1,0 +1,38 @@
+name: main_workflow
+on:
+  push:
+    branches:
+      - github_action_readme
+env:
+  DESTINATION_PERSON: 2DAW
+jobs:
+  test-execution:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - run: npm install jest
+      - run: npm test
+        id: test        
+  mod-readme:
+    needs: test-execution
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Action readme
+        uses: ./.github/actions/mod_readme
+        with:
+          frase_positiva: "ams/No_me_lo_creo/Ha_funcionado"
+          frase_negativa: "disastergirl/_/mira_pepe_si_que_va"
+          resultado_test: ${{ needs.test-execution.result }}
+      - name: Push readme
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "."
+          author_name: "Joaquim Ribera Soriano"
+          author_email: "joaquimdaweb@gmail.com"
+          message: "Readme Updated"
+          push: true
+        
