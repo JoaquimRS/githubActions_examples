@@ -15,6 +15,9 @@ jobs:
       - run: npm test
         id: test        
         continue-on-error: true
+      - name: Failure
+        if: steps.test.outcome != 'success'
+        run: echo Error && exit 1
   mod-readme:
     needs: test-execution
     if: ${{ always() }}
