@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - run: npm install jest
       - run: npm test
-        continue-on-error: true
         id: test        
+        continue-on-error: true
   mod-readme:
     needs: test-execution
     if: ${{ always() }}
